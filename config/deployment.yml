@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: python-example
-        image: <IMAGE>
+        image: registry.digitalocean.com/payus-github-test
         ports:
         - containerPort: 80
         resources:
